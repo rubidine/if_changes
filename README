@@ -1,13 +1,26 @@
 IfChanges
 =========
 
-Introduction goes here.
+Specify a block to run if a field changes during the lifespan of a record.
+
+By default the block will be run from before_validation callback, but
+
+  if_changes :field, :callback => :after_create
+
+can be used to change the callback.
 
 
 Example
 =======
 
-Example goes here.
+class MyModel < ActiveRecord::Base
+
+  # examlpe: denormalize a field from an associated record
+  if_changes :owner_id do
+    self.owner_name = owner.name
+  end
+
+end
 
 
 Copyright (c) 2009 [name of plugin creator], released under the MIT license

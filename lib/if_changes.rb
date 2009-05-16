@@ -68,7 +68,7 @@ module IfChanges
       cb[ar_callback].each do |atr, blks|
         if changes[atr.to_s]
           blks.each do |blk|
-            instance_eval &blk #blks.each{|blk| blk.call}
+            instance_eval &blk
           end
         end
       end
