@@ -51,7 +51,7 @@ module IfChanges
 
     def add_callback_runner ar_callback
       callback_list = "@#{ar_callback}_callbacks"
-      chain = self.class.instance_variable_get(callback_list)
+      chain = instance_variable_get(callback_list)
       return if chain and chain.detect{|x| x.identifier == 'if_changes'}
       send ar_callback, :identifier => 'if_changes' do |inst|
         inst.send :run_change_callbacks, ar_callback
